@@ -1,0 +1,214 @@
+{
+    "dataTransfer": [
+        {
+            "desc": "隐藏号码中间部分",
+            "f": [
+                "s.slice(0, 3)",
+                "'****'",
+                "s.slice(7)"
+            ]
+        },
+        {
+            "desc": "禁止选择今天之前的日期",
+            "f": "s && s < this.moment().endOf('day')"
+        }
+    ],
+    "comps": [
+        {
+            "comp": "span.singleFormDictSelect",
+            "initialValue": "",
+            "twoWayDataBinding": true,
+            "valueKey": "value",
+            "style": {
+                "width": "200px"
+            },
+            "compDesc": "表单字典下拉菜单",
+            "attrs": {}
+        },
+        {
+            "comp": "span.aInput",
+            "initialValue": "",
+            "twoWayDataBinding": true,
+            "valueKey": "value",
+            "compDesc": "普通文本框",
+            "style": {
+                "width": "200px"
+            },
+            "attrs": {
+                "label": "普通文本框"
+            }
+        },
+        {
+            "comp": "span.aInputNumber",
+            "extend": "span.aInput"
+        },
+        {
+            "comp": "span.price",
+            "reflect": "span.aInputNumber",
+            "extend": "span.aInput",
+            "listeners": [
+                "focus:p=this.querySelector('input'),p.value=p.value.trim()-0=='0'?'':p.value",
+                "blur:p=this.querySelector('input'),p.value=p.value.trim()-0=='0'?'':p.value"
+            ],
+            "attrs": {
+                "min": 0,
+                "max": 99999,
+                "modifyDomFnWhenInit": "p=this.querySelector('input'),p.value=p.value.trim()=='0'?'':p.value",
+                "modelTransfer": "s=>(''+s).trim().endsWith('.')?s:(s-0).toFixed(window.Math.min(2,((''+s).split('.')[1]||'').length))",
+                "formatter": [
+                    "s =>[s].map(function(value){return value-0==0",
+                    "?value:((''+value).includes('.') && (''+value).split('.')[1].length>2?(value-0).toFixed(2):value)})",
+                    ".map(function(value){return value<0?0:value})",
+                    ".map(function(value){return isNaN(value-0)?0:value})",
+                    ".join('')"
+                ]
+            }
+        },
+        {
+            "comp": "span.ParkingLotSearch",
+            "extend": "TableFilterItem.ParkingLotSearch"
+        },
+        {
+            "comp": "span.aRangePicker",
+            "extend": "TableFilterItem.aRangePicker"
+        },
+        {
+            "comp": "span.monthRange",
+            "reflect": "span.aRangePicker",
+            "compDesc": "月份选择器",
+            "valueKey": "value",
+            "extend": "TableFilterItem.aRangePicker",
+            "listeners": [
+                "panelChange"
+            ],
+            "attrs": {
+                "placeholder": [
+                    "开始月份",
+                    "结束月份"
+                ],
+                "format": "YYYY-MM",
+                "mode": [
+                    "month",
+                    "month"
+                ]
+            }
+        },
+        {
+            "comp": "TableFilterItem.ParkingLotSearch",
+            "initialValue": [],
+            "twoWayDataBinding": false,
+            "valueKey": "value",
+            "compDesc": "车场选择组件",
+            "attrs": {
+                "maxTagCount": 1,
+                "label": "车场名称",
+                "multiple": false,
+                "httpKey": "parkIds"
+            }
+        },
+        {
+            "comp": "TableFilterItem.PlateInput",
+            "initialValue": false,
+            "tempData4FilterParamGenerate": [],
+            "twoWayDataBinding": false,
+            "valueKey": "value",
+            "compDesc": "车牌号组件",
+            "attrs": {
+                "label": "车牌号",
+                "httpKey": [
+                    "plateHead",
+                    "plateTail"
+                ]
+            },
+            "listeners": [
+                "plateChange"
+            ]
+        },
+        {
+            "comp": "TableFilterItem.aRangePicker",
+            "initialValue": [],
+            "twoWayDataBinding": false,
+            "valueKey": "defaultPickerValue",
+            "compDesc": "时间范围选择组件",
+            "style": {
+                "width": "280px"
+            },
+            "attrs": {
+                "label": "查询时间",
+                "placeholder": [
+                    "开始时间",
+                    "结束时间"
+                ],
+                "httpKey": [
+                    "startTime",
+                    "endTime"
+                ]
+            },
+            "listeners": [
+                "change"
+            ]
+        },
+        {
+            "comp": "span.aDatePicker",
+            "f": "(s.trim()=='-'||s.trim()=='2099-12-31')?'永久':s",
+            "initialValue": "",
+            "twoWayDataBinding": false,
+            "foreverDate": "2099-12-31",
+            "valueKey": "defaultValue",
+            "compDesc": "普通时间选择组件",
+            "style": {
+                "width": "200px"
+            },
+            "attrs": {
+                "detailMode": false,
+                "null4Forever": false,
+                "label": "查询时间",
+                "placeholder": "请选择时间",
+                "disabledDate": "f:禁止选择今天之前的日期",
+                "httpKey": "time"
+            },
+            "listeners": [
+                "change"
+            ]
+        },
+        {
+            "comp": "single-table-filter-select",
+            "valueKey": "value",
+            "initialValue": "",
+            "twoWayDataBinding": false,
+            "compDesc": "单选下拉菜单"
+        },
+        {
+            "comp": "TableFilterItem.inputNumberWithAddon",
+            "initialValue": "",
+            "twoWayDataBinding": true,
+            "valueKey": "initialValue",
+            "compDesc": "原生文本框",
+            "attrs": {
+                "httpKey": "inputTest",
+                "placeholder": "placeholder"
+            }
+        },
+        {
+            "comp": "business-input-group",
+            "initialValue": [
+                "01",
+                ""
+            ],
+            "twoWayDataBinding": false,
+            "valueKey": "value",
+            "compDesc": "左下拉右文本框组合",
+            "attrs": {
+                "options": {
+                    "01": "联系人",
+                    "02": "联系电话",
+                    "03": "卡号"
+                },
+                "httpKey": [
+                    "userType",
+                    "userValue"
+                ]
+            }
+        }
+    ]
+}

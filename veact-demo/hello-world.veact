@@ -1,0 +1,163 @@
+
+
+// alert('test')
+// var fooBar=require('..sdf')
+// alert(2)
+
+/**
+ * sdfsdfsd
+ */
+
+
+// @Veact.LoadScripts
+// class extends Veact.ScriptLoader{
+// garbageRequireTest=this.require('../garbage-require-test.js')
+// }
+
+
+// @Import
+// class{
+//   t=r('../garbge-require-test')
+//   f=r('../garbge-require-test')
+// }
+
+// new test()
+
+
+
+@React
+class{
+  test=1
+  babelMethodTest(){
+    console.log('this--:',this)
+    let reactCompDemo=<div></div>; 
+    console.log('babel method was invoked--:',reactCompDemo)
+    return reactCompDemo;
+  }
+  constructor(){
+
+  }
+  async bootstrap() {
+    console.log('this in bootstrap--:',this,arguments)
+    return [
+      {
+        vm: class Demo extends React.Component {
+          constructor() {
+            super();
+            this.state = {
+              stateTest: "i am state test of react",
+            };
+          }
+          updateVueData(){
+            this.$parent.testData="ssss"+Math.random()
+          }
+          render() {
+            return <div>
+              i am react comp ---{this.state.stateTest}
+              ---<span veact-comp="test">
+                
+
+              </span>////
+              ---<br/>
+              {/* <span veact-comp="test"></span> */}
+              ---<br/>
+
+              <div veact-comp="foo"></div>
+
+              ---<br/>
+              <button onClick={this.updateVueData.bind(this)}>更改vue组件显示内容</button>
+              </div>;
+          }
+        },
+        $el: "main",
+      },
+      {
+        vm: ()=><div>你是我的小丫小苹果
+          
+
+        </div>,
+        $el: "demo1-container",
+      },
+    ];
+  }
+}
+
+
+
+
+
+  module.exports = {
+    
+    template:Veact.html`
+    <div>
+      abcd--{{testData}}
+      <span ref="main"></span>
+      dcba
+
+      <br>----
+
+      <veact.comp comp="foo"></veact.comp>
+      <!-- <foo/>///////////////////////////////////////////////// -->
+
+      <br>----
+
+
+
+      <span ref="demo1-container"></span>
+      aaaaaaaaaaaaa
+      <button @click="callBabel$('babelMethodTest')">调用一个babel方法将结果显示到控制台</button><br>
+      <button @click="allReactChilds$()[0].setState({'stateTest':'哈哈哈哈哈哈'})">
+        更改react组件的i am state test内容为哈哈哈哈哈哈</button><br>
+      <button @click="logAllInstance">打印所有class类型的react组件和所有vue组件实例到控制台</button><br>
+      <hr/>
+
+
+      <veact.comp v-if="load" :vm="_self" comp="async-test..tpl-only"/>
+
+      <button @click="loadComp">加载一个只有模板的vue组件</button><br>
+
+
+
+      下面这个红色的是:在一个vue组件中，使用veact内置组件加载器自动加载的后缀名为.veact的单文件组件//////////////////////////////
+
+      <veact.comp v-if="redComp" style="border:solid 1px red;" comp="test"/>
+      <test></test>
+      <test></test>
+
+
+      <br>
+      
+
+      下面这个蓝色的是:在一个vue组件中，使用veact内置组件加载器自动加载的后缀名为.veact且有同名的html文件的使用两个文件来定义一个vue组件的组件。
+      在这种情况里，vue组件依然可以加载react组件
+      <veact.comp v-if="redComp" style="border:solid 1px blue;" comp="multi-file..multi"/>
+      <br>
+      <button @click="redComp=false">销毁红色和蓝色这两个组件</button>
+      <br>
+
+      下面这个黄色的是一个纯的react组件:
+      <!-- <pure-react..react..jsx style="border:solid 1px yellow;"/> -->
+      <veact.comp style="border:solid 1px yellow;" comp="pure-react..react"/>
+      <br>
+      <div style="border:solid 2px pink;" id="omd-test">
+        在某个omd模块文件中，2s后挂在一个vue文件
+      </div>
+    </div>
+    `,
+    methods:{
+      loadComp() {
+        this.load = true;
+      },
+      logAllInstance(){
+        console.log("all instance---:",Veact.service.vmInstances);
+      }
+    },
+    data(){
+      return {
+        redComp:true,
+        load: false,
+        testData:'this is test data in vue'
+      }
+    }
+  };
+  

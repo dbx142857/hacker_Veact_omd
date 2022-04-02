@@ -1,0 +1,133 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+
+  <!-- --------------------------------- -->
+  <link rel="stylesheet" type="text/css" href="vue-hacker/deps/element/element.min.css"/>
+
+
+
+
+  <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" />
+  <title>veact-demo.js</title>
+  <style>
+    .veact-async-loading{
+      border:solid 1px orange;
+    }
+
+
+
+
+    .vue-hacker-replace{
+      position:relative;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .vue-hacker-replace.keep-default-positon{
+      position:initial;
+    }
+    .vue-hacker-replace:before{
+      content:'';
+      background: red;
+      opacity: 0.5;;
+      display: inline-block;
+      width:100%;
+      height:100%;
+      position:absolute;
+      top: 0;
+      left: 0;
+      border: solid 6px transparent;
+      transform: translate(-6px,-6px);
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+  <button class="vue-hacker-replace" id="abc">
+    abc
+  </button>
+
+  <button>dsfsdf</button>
+
+  <excel-import/>
+
+  <!-- <veact-app veact-base-url="./vue-hacker-components" veact-comp="vue-hacker-entry" /> -->
+
+</body>
+<script>(!("127.0.0.1 localhost".includes(location.hostname)) 
+&& (document.write(`<script onload="new VConsole()" src="./vconsole.min.js"><\/script>`)));</script>
+
+
+
+
+
+<!-- 
+
+
+  Veact.vm('excel-import').$$mount('excel-import') 
+
+
+
+  import Vue form 'vue'
+  Vue.prototype.Veact=window.Veact
+
+
+
+
+   let instance=await Veact.vm('excel-import');
+instance.$parent=this;
+instance.$mount('excel-import');
+instance.test()
+
+
+
+
+
+vm方法加载的组件里的方法的this指向补课改变
+
+
+
+无法传递props给子组件,但是可以直接改变子组件的值,和调用子组建的方法
+
+
+debugger
+
+
+-->
+
+<!-- -------------------------------- -->
+<script src="vue-hacker/vue-hacker.js"></script>
+
+
+
+<script>
+  document.getElementById('abc').addEventListener('click',(event)=>{
+    console.log("shit");
+    // event.preventDefault();
+    // event.stopImmediatePropagation();
+  })
+
+  document.body.addEventListener('click',(event)=>{
+    let t=event.target;
+    console.log(t)
+  })
+
+
+  setTimeout(()=>{
+    Veact.vm('excel-import').$$mount('excel-import')
+  },500)
+
+</script>
+
+
+
+
+</html>

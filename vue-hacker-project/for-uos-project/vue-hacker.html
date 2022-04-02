@@ -1,0 +1,103 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+
+  <!-- --------------------------------- -->
+  <link rel="stylesheet" type="text/css" href="vue-hacker/deps/element/element.min.css"/>
+
+
+
+
+  <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" />
+  <title>veact-demo.js</title>
+  
+</head>
+
+<body>
+
+
+  
+
+  <excel-import/>
+
+  <!-- <veact-app veact-base-url="./vue-hacker-components" veact-comp="vue-hacker-entry" /> -->
+
+</body>
+<script>(!("127.0.0.1 localhost".includes(location.hostname)) 
+&& (document.write(`<script onload="new VConsole()" src="./vconsole.min.js"><\/script>`)));</script>
+
+
+
+
+
+<!-- 
+
+
+  Veact.vm('excel-import').$$mount('excel-import') 
+
+  
+
+
+  import Vue form 'vue'
+  Vue.prototype.Veact=window.Veact
+
+
+
+
+   let instance=await Veact.vm('excel-import');
+instance.$parent=this;
+instance.$mount('excel-import');
+instance.test()
+
+
+
+
+
+vm方法加载的组件里的方法的this指向补课改变
+
+
+
+无法传递props给子组件,但是可以直接改变子组件的值,和调用子组建的方法
+
+
+debugger
+
+
+-->
+
+<!-- -------------------------------- -->
+<script src="vue-hacker/vue-hacker.js"></script>
+
+
+
+<script>
+  // document.getElementById('abc').addEventListener('click',(event)=>{
+  //   console.log("shit");
+  //   // event.preventDefault();
+  //   // event.stopImmediatePropagation();
+  // })
+
+  // document.body.addEventListener('click',(event)=>{
+  //   let t=event.target;
+  //   console.log(t)
+  // })
+
+
+  Veact.ready().then(()=>{
+    Veact.vm('zone-detail-tab..multi').$$mount('excel-import')
+  })
+  // setTimeout(()=>{
+    
+  // },500)
+
+</script>
+
+
+
+
+</html>

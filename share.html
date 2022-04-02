@@ -1,0 +1,89 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  
+  <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" />
+  <title>share</title>
+  <style>
+    *{
+      padding:0;
+      margin:0;
+    }
+    .section{
+      box-sizing:border-box;
+      width:1920px;
+      height:100%;
+      float:left;
+      padding:100px;
+      overflow:hidden;
+    }
+    /* .section em{
+      font-size:3em;
+    } */
+    </style>
+</head>
+
+<body style="overflow:hidden;position:relative;opacity:0;width:19200000px;height:100%;left:0;">
+  <!-- <button onclick="haneleClick()" style="font-size:2em;position:fixed;top:20px;right:0px;opacity:0.3;cursor:pointer;">
+    
+    next</button>
+
+    <button onclick="haneleClick(false)" style="font-size:2em;position:fixed;top:20px;right:200px;opacity:0.3;cursor:pointer;">
+    
+      prev</button> -->
+
+      <div id="page" style="position:fixed;right:50px;bottom:100px;color: purple;
+      font-size: 2em;">
+        1
+      </div>
+
+  <div class="section">
+    <h1 style="font-size:100px;">sales force 是如何用lightning components 来支持不同的客户个性化定制需求的</h1>
+  </div>
+  <div class="section" style="padding:0;">
+    skip....
+      </div>
+
+      <div class="section">
+        <h1 style="font-size:70px;">分析:A是如何用B来支持C的</h1>
+        <h1 style="font-size:70px;">分析:A是如何用B来支持C的</h1>
+          </div>
+
+</body>
+
+</html>
+<script>
+  if(localStorage.getItem('pwd')=='dbxlovejs1' || window.prompt('pwd?')=='dbxlovejs1' ){
+    localStorage.setItem('pwd','dbxlovejs1')
+    document.body.style.opacity='1'
+  }else{
+    location.reload()
+  }
+  let page=1;
+
+  function haneleClick(isNext=true){
+    let l=parseInt(window.getComputedStyle(document.body).left)
+    if(isNext){
+      page+=1;
+      document.body.style.left=l-1920+'px'
+    }else{
+      page-=1;
+      document.body.style.left=(l+1920)+'px'
+    }
+    document.querySelector('#page').innerHTML=page
+    
+  }
+
+  document.body.onkeyup=(e)=>{
+  if(39==e.keyCode){
+    haneleClick()
+  }else if(37==e.keyCode){
+    haneleClick(false)
+  }
+  }
+
+</script>

@@ -1,0 +1,11 @@
+
+class pureReactComp extends React.Component {
+  constructor() {
+    super()
+
+  }
+
+  render() {
+    return <div>我是一个纯粹的react组件哦oooooooo</div>
+  }
+}

@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  
+  <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" />
+  <title>veact-demo.js</title>
+  <style>
+    .veact-async-loading{
+      border:solid 1px orange;
+    }
+  </style>
+</head>
+
+<body>
+
+  <veact-app veact-base-url="./veact-demo" veact-comp="hello-world" />
+
+</body>
+<script>(!("127.0.0.1 localhost".includes(location.hostname)) 
+&& (document.write(`<script onload="new VConsole()" src="./vconsole.min.js"><\/script>`)));</script>
+<script src="Veact/Veact.js"></script>
+<script src="Veact/module-loader.js" init entry="['./import-test']"></script>
+
+</html>

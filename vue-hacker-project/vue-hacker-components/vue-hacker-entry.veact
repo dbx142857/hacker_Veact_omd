@@ -1,0 +1,75 @@
+
+  module.exports = {
+    
+    template:Veact.html`
+    <div>
+
+    <el-button>
+      sdfds
+    </el-button>
+    <el-alert>
+      速度发顺丰
+      </el-alert>
+
+      abcd--{{testData}}
+      <span ref="main"></span>
+      dcba
+
+      <br>----
+
+      <!-- <veact.comp comp="foo"></veact.comp> -->
+      <!-- <foo/>///////////////////////////////////////////////// -->
+
+      <br>----
+
+
+
+      <span ref="demo1-container"></span>
+      aaaaaaaaaaaaa
+      
+      <hr/>
+
+
+      <veact.comp v-if="load" :vm="_self" comp="async-test..tpl-only"/>
+
+      <button @click="loadComp">加载一个只有模板的vue组件</button><br>
+
+
+
+      下面这个红色的是:在一个vue组件中，使用veact内置组件加载器自动加载的后缀名为.veact的单文件组件//////////////////////////////
+
+      <veact.comp v-if="redComp" style="border:solid 1px red;" comp="test"/>
+      <test></test>
+      <test></test>
+
+
+      <br>
+      
+
+      <button @click="redComp=false">销毁红色和蓝色这两个组件</button>
+      <br>
+
+      
+      <br>
+      <div style="border:solid 2px pink;" id="omd-test">
+        在某个omd模块文件中，2s后挂在一个vue文件
+      </div>
+    </div>
+    `,
+    methods:{
+      loadComp() {
+        this.load = true;
+      },
+      logAllInstance(){
+        console.log("all instance---:",Veact.service.vmInstances);
+      }
+    },
+    data(){
+      return {
+        redComp:true,
+        load: false,
+        testData:'this is test data in vue'
+      }
+    }
+  };
+  

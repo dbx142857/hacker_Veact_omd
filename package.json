@@ -1,0 +1,17 @@
+{
+  "name": "jikegongju-web",
+  "version": "1.0.0",
+  "description": "jikegongju-web",
+  "main": "jike.html",
+  "scripts": {
+    "build": "node ../workspace/oms-monitor-fe/public/Bue/build.js && node ./build.js",
+    "start": "cd ./dev-server && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/dbx142857/jikegongju-web.git"
+  },
+  "author": "baixing.du",
+  "license": "ISC"
+}

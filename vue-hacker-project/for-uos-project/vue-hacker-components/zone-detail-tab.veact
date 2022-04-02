@@ -1,0 +1,22 @@
+module.exports={
+    data() {
+        return {
+          activeName: 'first'
+        };
+      },
+      methods: {
+        handleDelete(){
+            alert('delete'
+            )
+        },
+        handleSrcGot(){
+            console.log(arguments)
+        },
+        handlereadOK(){
+            console.log(arguments)
+        },
+        handleTabClick(tab, event) {
+          console.log(tab, event);
+        }
+      }
+}

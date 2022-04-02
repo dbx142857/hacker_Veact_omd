@@ -1,0 +1,18 @@
+
+@React
+class {
+
+  async bootstrap() {
+    return {
+      vm: class multiFileTest extends React.Component {
+
+        render() {
+          return <div>你是我的小丫小苹果-这是一个react组件哦ooooooo</div>
+        }
+      },
+      $el: "main"
+    }
+
+  }
+}
+

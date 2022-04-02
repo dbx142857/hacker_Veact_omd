@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" />
+  <title>omd-demo.js</title>
+  <style>
+    .vc-mask{
+      pointer-events: none !important;
+    }
+    </style>
+</head>
+
+<body>
+
+ <!-- <h1>请使用桌面浏览器控制台查看日志输出,或者点击右下角绿色vconsole小方框查看日志输出</h1> -->
+
+</body>
+<script src="./vconsole.min.js"></script>
+
+<script>
+  new VConsole();
+  setTimeout(() => {
+    document.querySelector('#__vconsole .vc-switch').click()
+  }, 100);
+  
+</script>
+
+
+<script src="./omd.js"  init entry="'./simple-omd-test'"></script>
+
+</html>

@@ -1,0 +1,100 @@
+<script type="text/template" id="app-entry">
+  <section>
+    
+    <!-- <el-menu
+    v-if="$route.path!='/demo' && $route.path!='/500' && $route.query.content_only!=1"
+    style="display:inline-block;width:200px;"
+    default-active="2"
+    class="el-menu-vertical-demo"
+    @open="handleOpen"
+    @close="handleClose"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b">
+    <el-submenu v-for="(outerItem,outerIndex) in bueStore.MENUS" :index="''+outerItem.menuId">
+      <template slot="title">
+        <i class="el-icon-location"></i>
+        <span>{{outerItem.menuName}}</span>
+      </template>
+      <el-menu-item-group>
+        
+        <el-menu-item :data-url="innerItem.menuUrl" @click="toViewByMenuClick(outerItem,innerItem)" v-for="(innerItem,innerIndex) in outerItem.childMenu" :index="''+innerItem.menuId">{{innerItem.menuName}}</el-menu-item>
+        
+      </el-menu-item-group>
+      
+    </el-submenu>
+    
+  </el-menu> -->
+
+
+
+  <div style="display:inline-block;
+  ;box-sizing:border-box;vertical-align:top;" >
+  <!-- <div style="display:inline-block;width:calc(100% - 204px)
+  ;box-sizing:border-box;vertical-align:top;" > -->
+
+
+  <header
+  data-hacker
+  id="my-bue-app-header"
+  
+  style="background-color:#dcdfe6;box-sizing:border-box;
+  padding:0 10px;">
+    
+    <nav>菜单1/菜单1-1
+/
+      <span style="color:#096dd9;font-size:2em;">
+          {{hackerIntroDesc}}
+      </span>
+
+    </nav>
+    
+    
+  </header>
+
+
+
+
+
+  <div style="margin-top:20px;box-sizing:border-box;padding:10px;">
+
+
+
+
+    <keep-alive>
+  
+ 
+ 
+  <router-view
+  class="bue-app-router-view"
+  v-if="$route.meta.keepAlive">
+     
+  </router-view>
+  
+</keep-alive>
+
+<router-view
+class="bue-app-router-view" v-if="!$route.meta.keepAlive">
+  
+</router-view>
+
+
+
+<div id="hacker-introduction-info">
+  <div>
+    
+  </div>
+</div>
+
+
+  </div>
+
+  </div>
+
+
+
+       
+     
+
+  </section>
+</script>

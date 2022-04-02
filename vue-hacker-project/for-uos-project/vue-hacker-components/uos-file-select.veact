@@ -1,0 +1,133 @@
+module.exports={
+    template: Veact.html`
+        <span>
+        <el-dialog v-if="isViewDialogVisible" title="收货地址" :visible.sync="isViewDialogVisible">
+            {{readedObj.contentText}}
+        </el-dialog>
+
+        <img :src="imgSrc" style="max-width:300px;"/>
+            <span>{{showingFileName}}</span>
+
+            <span v-if="showingFileName">
+                <el-button @click="isViewDialogVisible=true;">查看</el-button>
+                <el-button @click="readedObj=null;showingFileName='';$emit('delete')">删除</el-button>
+                <!-- <el-button @click="readedObj=null;showingFileName='';$emit('delete')">删除</el-button> -->
+            </span>
+
+            <el-button @click="handleSelectClick($event)">上传</el-button>
+        </span>
+    `,
+    props: {
+        
+        is_img: {
+
+            type: [Boolean],
+            default:false
+        },
+        name_suffix_dot: {
+            type: Array,
+            default: []
+        },
+        value:{
+            type:Object
+        }
+    },
+    data(){
+        return {
+            showingFileName:'',
+            isViewDialogVisible:false,
+            imgSrc:'',
+            readedObj:null,
+        }
+    },
+    methods: {
+        validateSuffix(name) {
+
+
+            //null表示允许任意类型的扩展名
+            if (this.name_suffix_dot === null) {
+                return true;
+            }
+            var index = name.lastIndexOf('.');
+            var fileType = name.substring(index + 1, name.length);
+            if (Array.isArray(this.name_suffix_dot)) {
+                return this.name_suffix_dot.some((suffix) => fileType === suffix);
+            } else {
+                return fileType === this.name_suffix_dot || !this.name_suffix_dot;
+            }
+        },
+        viewText(){
+
+        },
+        async handleSelectClick() {
+            let self=this;
+            // 创建文件输入元素，选择文件
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.click();
+            await new Promise((resolve) => (input.onchange = resolve));
+            const name = input.files[0].name;
+            if (!this.validateSuffix(name)) {
+                Vue.prototype.$message.error(`只能上传后缀名是 ${this.name_suffix_dot} 的文件`)
+                return;
+            }
+            if (!input.files.length) {
+                return;
+            }
+            // 读取文件
+            const content = URL.createObjectURL(input.files[0]),src=content;
+
+
+
+            if(this.is_img){
+
+                if (input.files[0].size > 1024 * 1024 * 2) {
+                    Vue.prototype.$message.error('图片文件不能大于2M');
+                    input.value = '';
+                    return;
+                  }
+                  const src = URL.createObjectURL(input.files[0]);
+                  const img = new Image();
+                  img.src = src;
+                  img.onerror = () => {
+                    input.value = '';
+                    Vue.prototype.$message.error('不支持的图片格式');
+                  };
+                  img.onload = () => {
+                      self.imgSrc=src;
+                    self.$emit('src',src)
+                  };
+                return
+            }
+
+
+
+            let d = {
+                name,
+                content
+            }
+            console.log('d--：',d)
+
+            const reader = new FileReader()
+            reader.onload = (event) => {
+                const c = event.target.result;
+
+                let dd = {
+                    name, content, file: input.files[0], contentText: c
+                }
+                console.log('dd---:', dd)
+                this.$emit('read',dd)
+                self.showingFileName=dd.name
+                self.readedObj=dd;
+
+                // this.select.emit({ name, content, file: input.files[0], contentText: c });
+                // this.group.patchValue({ name, content });
+            } // desired file content
+            reader.readAsText(input.files[0]);
+        }
+    },
+    mounted() {
+        console.log('this.name_suffix_dot---:',this.name_suffix_dot,this.is_img,this.test,typeof(this.is_img),this.value)
+
+    }
+}

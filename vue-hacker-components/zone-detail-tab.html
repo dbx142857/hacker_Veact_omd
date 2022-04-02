@@ -1,0 +1,20 @@
+<div>
+    <el-tabs v-model="activeName" type="card" @tab-click="handleTabClick">
+        <el-tab-pane label="基础配置" name="first">
+            <uos-zone-detail-basic..multi></uos-zone-detail-basic..multi>
+            
+        </el-tab-pane>
+        <el-tab-pane label="高级配置" name="second">
+            高级配置
+        </el-tab-pane>
+        <el-tab-pane label="应用限制" name="third">
+            应用限制
+        </el-tab-pane>
+        <el-tab-pane label="修复区" name="fourth">
+            修复区
+        </el-tab-pane>
+        <el-tab-pane label="安全配置" name="fifth">
+            安全配置
+        </el-tab-pane>
+      </el-tabs>
+</div>

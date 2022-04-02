@@ -1,0 +1,31 @@
+<div>
+    基础配置-
+    <uos-file-select
+    :value="{
+
+        name: '',
+            content: '',
+            upload_at: {},
+            force: 1
+
+    }"
+
+    @read="handlereadOK"
+    @delete="handleDelete"
+    :is_img="false" :name_suffix_dot="['html']"></uos-file-select>
+
+    <div>
+        <uos-file-select
+    :value="{
+
+        name: '',
+            content: '',
+            upload_at: {},
+            force: 1
+
+    }"
+
+    @src="handleSrcGot"
+    :is_img="true" :name_suffix_dot="['jpg']"></uos-file-select>
+    </div>
+</div>

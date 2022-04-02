@@ -1,0 +1,13 @@
+@React
+class{
+    
+    bootstrap(){
+        return {
+            vm:()=><span>this is a reaact component in foo file</span>,
+            $el:'myRef'
+        }
+    }
+}
+module.exports={
+    template:'<div>this is fooooo<span ref="myRef">---</span>oooooooooooooo</div>'
+}

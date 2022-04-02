@@ -1,0 +1,10 @@
+
+// var fooBar=require('..sdf')
+let count = 0;
+module.exports = {
+    template: "<div><span style='color:red;'>this is test fileeeeeeeeee</span></div>",
+    mounted() {
+        count++;
+        // console.log('count--:',count)
+    }
+}

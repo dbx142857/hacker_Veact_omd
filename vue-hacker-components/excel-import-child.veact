@@ -1,0 +1,22 @@
+module.exports={
+
+  template:Veact.html`
+  
+  <div>
+
+this is chlild
+
+  `,
+
+
+
+methods:{
+  test(){
+    alert('i aam chiild')
+  }
+}
+,mounted(){
+  this.$emit('abc')
+  console.log('data in parent--------_:',this.$parent._self._self._self._self._self._self._self._data.arr)
+}
+}

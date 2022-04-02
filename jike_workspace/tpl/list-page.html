@@ -1,0 +1,105 @@
+<div>
+    <slot></slot>
+    <div style="min-height:200px;" v-loading="!vm.ALL_RESOLVE">
+        <!-- <div v-if="vm.isListPage" style="min-height:200px;" v-loading="!vm.ALL_RESOLVE"> -->
+        <div v-if="vm.ALL_RESOLVE">
+            <el-dialog @close="vm.hideDialog" :title="vm.dialogTitle" v-if="vm.dialogVisible"
+                :visible="vm.dialogVisible">
+
+                <div class="bx-el-form-wrapper" :class="{'bx-detail-form-wrapper':vm.isDetail}">
+                    <el-form label-position="right" label-width="80px" :model="vm.dialogModel">
+                        <div
+                            v-if="!vm.slotKeys.includes('create-update-dialog-content') && !vm.slotKeys.includes('create-update-detail-dialog-content')">
+
+                            <div v-show="vm.openingDialogType=='create'">
+                                <slot name="create-dialog-content"></slot>
+
+                            </div>
+                            <div v-show="vm.openingDialogType=='update'">
+                                <slot name="update-dialog-content"></slot>
+
+                            </div>
+                            <div v-show="vm.openingDialogType=='detail'">
+                                <slot name="detail-dialog-content"></slot>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div v-if="!vm.slotKeys.includes('create-update-detail-dialog-content')"
+                            v-show="vm.openingDialogType=='update' || vm.openingDialogType=='create'">
+                            <slot name="create-update-dialog-content"></slot>
+                        </div>
+
+
+                        <div
+                            v-show="vm.openingDialogType=='update' || vm.openingDialogType=='create'|| vm.openingDialogType=='detail'">
+                            <slot name="create-update-detail-dialog-content"></slot>
+                        </div>
+
+
+
+                    </el-form>
+
+                </div>
+
+
+
+
+
+
+                <div slot="footer" class="dialog-footer">
+                    <el-button v-if="vm.openingDialogType=='update' || vm.openingDialogType=='create'"
+                        @click="vm.hideDialog">取
+                        消</el-button>
+                    <el-button type="primary" @click="vm.openingDialogType!='detail'?vm.submit():vm.hideDialog()">
+                        {{vm.isDialogSubmiting?'提交中...':'确定'}}</el-button>
+                </div>
+
+            </el-dialog>
+
+
+
+
+
+
+
+
+            <div>
+                <slot name="table-before"></slot>
+            </div>
+            <slot name="tabs"></slot>
+            <el-table v-loading="vm.isLoadingList" :data="vm.tableData" style="width: 100%">
+
+
+                <slot name="table"></slot>
+
+
+                <el-table-column v-if="vm.SHOW_OPERATE_COLUMN===true" label="操作" width="180">
+                    <template slot-scope="scope">
+                        <el-button v-if="vm.OPERATE_BTN_CONFIG.EDIT"
+                            @click="vm.showDialog('update');vm.fetchDetail(scope.row)" type="text">编辑</el-button>
+                        <el-button v-if="vm.OPERATE_BTN_CONFIG.DETAIL"
+                            @click="vm.showDialog('detail');vm.fetchDetail(scope.row)" type="text">详情</el-button>
+                        <slot name="operate">
+
+                        </slot>
+                    </template>
+                </el-table-column>
+
+
+            </el-table>
+            <slot name="table-after"></slot>
+        </div>
+
+
+
+
+    </div>
+    <!-- <div v-else>
+        <slot></slot>
+    </div> -->
+
+</div>

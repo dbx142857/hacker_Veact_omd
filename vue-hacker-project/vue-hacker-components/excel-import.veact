@@ -1,0 +1,44 @@
+module.exports={
+
+  template:Veact.html`
+  
+  <div>
+
+
+  <excel-import-child @abc="testABC()"/>
+
+  <el-button @click="test">导入</el-button>
+
+  <button @click="callChild">invoke child</button>
+
+
+  <el-table :data="[]">
+  </el-table>
+
+  </div>
+
+  `,
+
+
+data(){
+  return {
+    arr:[1,2]
+  }
+},
+
+methods:{
+  callChild(){
+    this.$children
+    debugger
+    // this.$children[0].test()
+  },
+  testABC(){
+    alert('abc')
+  },
+  test(){
+    console.log('my parent--:',this.$parent)
+    console.log(this)
+    console.log(1)
+  }
+}
+}
